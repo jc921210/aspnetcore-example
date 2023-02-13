@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Empresa.Proyecto.Core.Entities;
-
+using Empresa.Proyecto.Infra.Data.Configuration;
 
 namespace Empresa.Proyecto.Infra.Data
 {
@@ -21,6 +21,7 @@ namespace Empresa.Proyecto.Infra.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {           
             builder.ApplyConfigurationsFromAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+            builder.ApplyConfiguration(new SimpleEntityConfig());
         }
     }
 }

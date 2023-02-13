@@ -15,6 +15,30 @@ namespace Empresa.Proyecto.Infra.Data.Configuration
             builder.Property(e => e.Name)
             //    .IsRequired();
                 .HasMaxLength(250);
+
+            builder.HasData
+   (
+       new SimpleEntity
+       {
+           Id = 1,
+           Name = "Nuevo",
+          Value = "Nuevo",
+          Created = new DateTime()
+       },
+       new SimpleEntity
+       {
+           Id = 2,
+           Name = "Existente",
+           Value = "Existente",
+           Created = new DateTime()
+       }, new SimpleEntity
+       {
+           Id = 3,
+           Name = "Reconstruido",
+           Value = "Reconstruido",
+           Created = new DateTime()
+       }
+   );
         }
     }
 }
