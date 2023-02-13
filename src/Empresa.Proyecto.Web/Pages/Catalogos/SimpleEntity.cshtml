@@ -27,6 +27,7 @@
 </div>
 
 @section Scripts{
+  
     <script type="text/javascript">
         $(document).ready(function() {
             $('#entities').DataTable({
@@ -35,16 +36,19 @@
                     type: 'POST',
                     headers: { 'RequestVerificationToken': $('@Html.AntiForgeryToken()').val() }
                 },
+                columnDefs: [{
+                    targets: 3,
+                    render: $.fn.dataTable.render.moment('dd/MM/yyyy')
+                }],
+                "aaSorting": [[1, "asc"]],
                 columns:[
+                    { data: 'Id' },
                     {
-                        data: {
-                            _: "name",
-                            sort: "name"
-                        }
+                        data: 'Name',
                     },
                     { data: 'Value' },
-                    { data: 'Created' },
-                    { data: 'Modified'}
+                    { data: 'Created', render: DataTable.render.datetime( 'dd/MM/yyyy' )  },
+                    { data: 'Modified', render: DataTable.render.datetime('dd/MM/yyyy') }
                 ]
             });
         })
