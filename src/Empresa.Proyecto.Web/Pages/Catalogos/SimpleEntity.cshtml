@@ -36,7 +36,12 @@
                     headers: { 'RequestVerificationToken': $('@Html.AntiForgeryToken()').val() }
                 },
                 columns:[
-                    { data: 'Name'},
+                    {
+                        data: {
+                            _: "name",
+                            sort: "name"
+                        }
+                    },
                     { data: 'Value' },
                     { data: 'Created' },
                     { data: 'Modified'}
